@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+    <head th:replace="fragments :: head"></head>
+
+    <body class="container">
+
+        <h1 th:text="${title}">Default Title</h1>
+
+        <nav th:replace="fragments :: navigation"></nav>
+
+<!-- TODO add notes -->
+        <p th:unless="${jobs} and ${jobs.size()}">No Projects Yet</p>
+
+        <table class="table">
+
+            <tr>
+
+                <th>Room</th>
+                <th>Job Description</th>
+                <th>Job Category</th>
+
+            </tr>
+
+            <tr th:each="job : ${jobs}">
+
+                <td th:text="${job.name}"></td>
+                <td th:text="${job.description}"></td>
+                <td th:text="${job.jobClass.name}"></td>
+
+            </tr>
+
+        </table>
+
+        <p>
+
+            <a href="/job/add">Add Project</a> |
+            <a href="/job/remove">Remove Project</a>
+
+        </p>
+
+    </body>
+
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+    <head th:replace="fragments :: head"></head>
+
+    <body class="container">
+
+        <h1 th:text="${title}">Default Title</h1>
+
+        <nav th:replace="fragments :: navigation"></nav>
+
+<!-- TODO add notes -->
+        <ul>
+
+            <li th:each="contractor : ${contractors}">
+
+                <a th:href="'/contractor/view/' + ${contractor.uid}" th:text="${contractor.name}"></a>
+
+            </li>
+
+        </ul>
+
+        <p><a href="/contractor/add">Add Contractor</a></p>
+
+    </body>
+
+</html>

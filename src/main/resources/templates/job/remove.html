@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+    <head th:replace="fragments :: head"></head>
+
+    <body class="container">
+
+        <h1 th:text="${title}">Default Title</h1>
+
+        <nav th:replace="fragments :: navigation"></nav>
+
+<!-- TODO add notes -->
+        <form method="post">
+
+            <div th:each="job : ${jobs}" class="checkbox">
+
+                <input type="checkbox" name="ids" th:value="${job.uid}" th:id="${job.uid}"/>
+                <label th:for="${job.uid}" th:text="${job.name}"></label>
+
+                <br />
+
+            </div>
+
+            <input type="submit" value="Remove Project" />
+
+        </form>
+
+    </body>
+
+</html>

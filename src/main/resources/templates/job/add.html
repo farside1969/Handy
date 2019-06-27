@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+    <head th:replace="fragments :: head"></head>
+
+    <body class="container">
+
+        <h1 th:text="${title}">Default Title</h1>
+
+        <nav th:replace="fragments :: navigation"></nav>
+
+<!-- TODO add notes -->
+        <form method="post" style="max-width:600px;" th:object="${job}">
+
+            <div class="form-group">
+
+                <label th:for="name">Room</label>
+                <input class="form-control" th:field="*{name}" />
+                <span th:errors="*{name}" class="error"></span>
+
+            </div>
+
+            <div class="form-group">
+
+                <label th:for="description">Job</label>
+                <input class="form-control" th:field="*{description}" />
+                <span th:errors="*{description}" class="error"></span>
+
+            </div>
+
+            <div class="form-group">
+
+                <label th:for="type">Job Class</label>
+
+                <select name="jobClassId">
+
+                    <option th:each="jobClass : ${jobClasses}"
+                    th:text="${jobClass.name}"
+                    th:value="${jobClass.uid}"></option>
+
+                </select>
+
+            </div>
+
+            <input type="submit" value="Add Job" />
+
+        </form>
+
+    </body>
+
+</html>

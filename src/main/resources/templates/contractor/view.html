@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+    <head th:replace="fragments :: head"></head>
+
+    <body class="container">
+
+        <h1 th:text="${contractor.name}">Default Title</h1>
+
+        <nav th:replace="fragments :: navigation"></nav>
+
+<!-- TODO add notes -->
+        <ul>
+
+<!-- select job.name or job.description or job.class (category) to display in list-->
+            <li th:each="job : ${contractor.jobs}" th:text="${job.description}"></li>
+
+        </ul>
+
+        <p th:unless="${contractor.jobs.size()}"><i>No Jobs Yet</i></p>
+
+        <p><a th:href="'/contractor/add-item/' + ${contractor.uid}">Add Job</a></p>
+
+    </body>
+
+</html>

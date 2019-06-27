@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+
+    <head th:replace="fragments :: head"></head>
+
+    <body class="container">
+
+        <h1 th:text="${title}">Default Title</h1>
+
+        <nav th:replace="fragments :: navigation"></nav>
+
+<!-- TODO add notes -->
+        <ul>
+
+            <li th:each="jobClass : ${jobClasses}">
+
+                <a th:href="'/job/jobClass?uid=' + ${jobClass.uid}" th:text="${jobClass.name}"></a>
+
+            </li>
+
+        </ul>
+
+        <p><a href="/jobClass/add">Add Job Category</a></p>
+
+    </body>
+
+</html>
