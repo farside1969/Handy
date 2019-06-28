@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-//TODO add notes
+//manages the CRUD inheritance of the DAOs for each designated class
 public abstract class AbstractController {
 
     @Autowired
@@ -26,8 +26,10 @@ public abstract class AbstractController {
     @Autowired
     protected ContractorDao contractorDao;
 
+//user session key constructor
     public static final String userSessionKey = "user_id";
 
+//getter and setter
     protected User getUserFromSession(HttpSession session) {
         Integer userId = (Integer) session.getAttribute(userSessionKey);
         return userId == null ? null : userDao.findOne(userId);
@@ -37,6 +39,7 @@ public abstract class AbstractController {
         session.setAttribute(userSessionKey, user.getUid());
     }
 
+//user id for session key
     @ModelAttribute("userId")
     public Integer getUserIdFromSession(HttpServletRequest request) {
         return (Integer) request.getSession().getAttribute(userSessionKey);

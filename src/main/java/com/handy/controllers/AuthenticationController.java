@@ -13,13 +13,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
-//TODO review notes
 @Controller
 public class AuthenticationController extends AbstractController {
 
 //displays register form
     @RequestMapping(value = "/register", method = RequestMethod.GET)
-    public String registerForm(Model model) {
+    public String displayRegisterForm(Model model) {
         model.addAttribute(new RegisterForm());
         model.addAttribute("title", "Register");
         return "register";
@@ -27,22 +26,23 @@ public class AuthenticationController extends AbstractController {
 
 //processes register form
     @RequestMapping(value = "/register", method = RequestMethod.POST)
-    public String register(@ModelAttribute @Valid RegisterForm form, Errors errors, HttpServletRequest request) {
+    public String processRegisterForm(@ModelAttribute @Valid RegisterForm form, Errors errors, HttpServletRequest request) {
 
 //if errors returns to register page
         if (errors.hasErrors()) {
             return "register";
         }
 
+//retrieve username from existing database if exists
         User existingUser = userDao.findByUsername(form.getUsername());
 
-//if username already exists then returns to register page
+//error if username already exists then returns to register page
         if (existingUser != null) {
             errors.rejectValue("username", "username.alreadyexists", "A user with that username already exists");
             return "register";
         }
 
-//creates new user, sets in session and returns to home page
+//creates new user, sets in session and returns to job index page
         User newUser = new User(form.getUsername(), form.getPassword());
         userDao.save(newUser);
         setUserInSession(request.getSession(), newUser);
@@ -52,7 +52,7 @@ public class AuthenticationController extends AbstractController {
 
 //displays login form
     @RequestMapping(value = "/login", method = RequestMethod.GET)
-    public String login(Model model) {
+    public String displayLoginForm(Model model) {
         model.addAttribute(new LoginForm());
         model.addAttribute("title", "Log In");
         return "login";
@@ -60,35 +60,36 @@ public class AuthenticationController extends AbstractController {
 
 //processes login form
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String login(@ModelAttribute @Valid LoginForm form, Errors errors, HttpServletRequest request) {
+    public String processLoginForm(@ModelAttribute @Valid LoginForm form, Errors errors, HttpServletRequest request) {
 
 //if errors returns to login page
         if (errors.hasErrors()) {
             return "login";
         }
 
+//retrieve user and password
         User theUser = userDao.findByUsername(form.getUsername());
         String password = form.getPassword();
 
-//if username does not exist then returns to login page
+//error if username does not exist then returns to login page
         if (theUser == null) {
             errors.rejectValue("username", "user.invalid", "The given username does not exist");
             return "login";
         }
 
-//if password does not exist then returns to login page
+//error if password does not match with assigned user then returns to login page
         if (!theUser.isMatchingPassword(password)) {
             errors.rejectValue("password", "password.invalid", "Invalid password");
             return "login";
         }
 
-//sets user in session and returns to home page
+//sets user in session and returns to job index page
         setUserInSession(request.getSession(), theUser);
 
         return "redirect:job";
     }
 
-//removes user from session and returns to login page
+//logout removes user from session and returns to main index page
     @RequestMapping(value = "/logout", method = RequestMethod.GET)
     public String logout(HttpServletRequest request){
         request.getSession().invalidate();

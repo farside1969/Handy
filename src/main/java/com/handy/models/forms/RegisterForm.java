@@ -5,6 +5,7 @@ import javax.validation.constraints.NotNull;
 //TODO add notes
 public class RegisterForm extends LoginForm {
 
+//login verify password requirements with spring error message
     @NotNull(message = "Passwords to not match")
     private String verifyPassword;
 
@@ -14,6 +15,7 @@ public class RegisterForm extends LoginForm {
         checkPasswordForRegistration();
     }
 
+//getter and setter
     public String getVerifyPassword() {
         return verifyPassword;
     }

@@ -1,23 +1,24 @@
 package com.handy.models.forms;
 
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 public class LoginForm {
 
-//TODO add notes
-//TODO change from @Pattern to @Size
+//login username field requirements with spring error message
     @NotNull
-    @Pattern(regexp = "[a-zA-Z][a-zA-Z0-9_-]{3,30}", message = "Usernames must be between 3 and 30 characters, and may contain only letters and numbers")
+    @Size(min = 3, max = 30, message = "Username must be between 3 and 30 characters")
     private String username;
 
-//TODO change from @Pattern to @Size
+//login password field requirements with spring error message
     @NotNull
-    @Pattern(regexp = "(\\S){3,20}", message = "Password must have 3-20 characters")
+    @Size(min = 3, max =30, message = "Password must have 3-20 characters")
     private String password;
 
+//default login constuctor
     public LoginForm() {}
 
+//getters and setters
     public String getUsername() {
         return username;
     }

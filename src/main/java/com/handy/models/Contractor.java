@@ -6,23 +6,27 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.List;
 
-//TODO add notes
 @Entity
 public class Contractor extends AbstractEntity {
 
+//contractor name field requirements with spring error message
     @NotNull
-    @Size(min=3, max=30)
+    @Size(min=3, max=30, message = "Name must be between 3 and 30 characters")
     private String name;
 
+//spring tying list of many Job to many jobs relationship
     @ManyToMany
     private List<Job> jobs;
 
+//default constructor
     public Contractor() {}
 
+//add item to jobs
     public void addItem(Job item) {
         jobs.add(item);
     }
 
+//getter and setter
     public String getName() {
         return name;
     }
@@ -31,6 +35,7 @@ public class Contractor extends AbstractEntity {
         this.name = name;
     }
 
+//list of jobs
     public List<Job> getJobs() {
         return jobs;
     }

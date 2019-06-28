@@ -5,26 +5,31 @@ import com.handy.models.Contractor;
 
 import javax.validation.constraints.NotNull;
 
-//TODO add notes
+//TODO correct notes?
 public class AddContractorForm {
 
+//field ids
     @NotNull
     private int contractorId;
 
     @NotNull
     private int jobId;
 
+//field objects
     private Iterable<Job> jobs;
 
     private Contractor contractor;
 
+//default constructor
     public AddContractorForm() {}
 
+//constructor for jobs and contractor
     public AddContractorForm(Iterable<Job> jobs, Contractor contractor) {
         this.jobs = jobs;
         this.contractor = contractor;
     }
 
+//getters and setters
     public int getContractorId() {
         return contractorId;
     }

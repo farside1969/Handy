@@ -15,15 +15,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
-//TODO add notes
 @Controller
 @RequestMapping("job")
 public class JobController extends AbstractController {
 
-//request path: /job
+//displays job index page
     @RequestMapping(value = "")
     public String index(Model model, HttpServletRequest request) {
 
+//retrieve user in session
         User user = getUserFromSession(request.getSession());
 
         model.addAttribute("jobs", jobDao.findByOwner(user));
@@ -32,6 +32,7 @@ public class JobController extends AbstractController {
         return "job/index";
     }
 
+//displays add job form
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayAddJobForm(Model model) {
         model.addAttribute("title", "Add Job");
@@ -40,20 +41,24 @@ public class JobController extends AbstractController {
         return "job/add";
     }
 
+//processes add job form
     @RequestMapping(value = "add", method = RequestMethod.POST)
     public String processAddJobForm(@ModelAttribute @Valid Job newJob,
                                        Errors errors, @RequestParam int jobClassId, Model model,
                                        HttpServletRequest request) {
 
+//if errors returns to add job form
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Job");
             model.addAttribute("jobClasses", jobClassDao.findAll());
             return "job/add";
         }
 
+//retrieve user in session and save as owner with new job
         User owner = getUserFromSession(request.getSession());
         newJob.setOwner(owner);
 
+//retrieve jobClass and save as cat with new job
         JobClass cat = jobClassDao.findOne(jobClassId);
         newJob.setJobClass(cat);
 
@@ -62,9 +67,11 @@ public class JobController extends AbstractController {
         return "redirect:";
     }
 
+//display remove job form
     @RequestMapping(value = "remove", method = RequestMethod.GET)
     public String displayRemoveJobForm(Model model, HttpServletRequest request) {
 
+//retrieve user in session
         User user = getUserFromSession(request.getSession());
 
         model.addAttribute("jobs", jobDao.findByOwner(user));
@@ -72,9 +79,11 @@ public class JobController extends AbstractController {
         return "job/remove";
     }
 
+//process remove job form
     @RequestMapping(value = "remove", method = RequestMethod.POST)
     public String processRemoveJobForm(@RequestParam int[] ids) {
 
+//delete job from existence via job id and return to job index page
         for (int id : ids) {
             jobDao.delete(id);
         }
@@ -82,9 +91,11 @@ public class JobController extends AbstractController {
         return "redirect:";
     }
 
+//display jobClass form
     @RequestMapping(value = "jobClass", method = RequestMethod.GET)
-    public String jobClass(Model model, @RequestParam int uid) {
+    public String displayJobClass(Model model, @RequestParam int uid) {
 
+//ties jobClass with job and returns to job index page
         JobClass cat = jobClassDao.findOne(uid);
         List<Job> jobs = cat.getJobs();
         model.addAttribute("jobs", jobs);
