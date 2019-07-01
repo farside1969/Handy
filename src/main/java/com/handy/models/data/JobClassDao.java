@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
-//CRUD VooDoo
+//add CRUD inheritance
 @Repository
 @Transactional
 public interface JobClassDao extends CrudRepository<JobClass, Integer> {

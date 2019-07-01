@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<!-- TODO refactor remove form -->
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 
     <head th:replace="fragments :: head"></head>
@@ -12,9 +12,6 @@
 
         <form method="post">
 
-<!-- 1 line space between nav bar and body -->
-            <br />
-
 <!-- checkbox loop for job removable -->
             <div th:each="job : ${jobs}" class="checkbox">
 
@@ -26,9 +23,6 @@
                 <br />
 
             </div>
-
-<!-- 1 line space between body and remove button -->
-            <br />
 
             <input type="submit" value="Remove Project" />
 

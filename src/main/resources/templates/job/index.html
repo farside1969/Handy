@@ -11,6 +11,9 @@
         <nav th:replace="fragments :: navigation"></nav>
 
 <!-- TODO add notes -->
+<!-- 1 line space bewteen nav bar and body -->
+        <br />
+
         <p th:unless="${jobs} and ${jobs.size()}">No Projects Yet</p>
 
         <table class="table">

@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 
-//CRUD VooDoo
+//add CRUD inheritance
 @Repository
 @Transactional
 public interface UserDao extends CrudRepository<User, Integer> {

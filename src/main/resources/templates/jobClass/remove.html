@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+<!-- TODO refactor remove form -->
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 
     <head th:replace="fragments :: head"></head>
@@ -10,22 +10,23 @@
 
         <nav th:replace="fragments :: navigation"></nav>
 
-<!-- TODO add notes -->
         <form method="post">
 
-<!-- checkbox loop for job removable -->
-            <div th:each="job : ${jobs}" class="checkbox">
+<!-- checkbox loop for jobClass removable -->
+            <div th:each="jobClass : ${jobClasses}" class="checkbox">
 
-<!-- checkbox to select job via jobId to be removed -->
-                <input type="checkbox" name="ids" th:value="${job.uid}" th:id="${job.uid}"/>
-<!-- job name and jobId in line with checkbox above -->
-                <label th:for="${job.uid}" th:text="${job.name}"></label>
-
-                <br />
+<!-- checkbox to select jobClass via jobClassId to be removed -->
+                <input type="checkbox" name="ids" th:value="${jobClass.uid}" th:id="${jobClass.uid}"/>
+<!-- jobClass name and jobClassId in line with checkbox above -->
+                <label th:for="${jobClass.uid}" th:text="${jobClass.name}"></label>
 
             </div>
 
-            <input type="submit" value="Remove Project" />
+<!-- 1 line space between body objects and remove button -->
+            <br />
+
+<!-- submit button -->
+            <input type="submit" value="Remove Category" />
 
         </form>
 

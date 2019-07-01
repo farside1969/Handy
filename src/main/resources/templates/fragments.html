@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 
-<!-- TODO add notes -->
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 
+<!-- thymeleaf header -->
     <head th:fragment="head">
 
         <meta charset="UTF-8"/>
 
+<!-- display page title -->
         <title th:text="${title}">My Projects</title>
 
+<!-- bootstrap decor -->
         <link rel="stylesheet" th:href="@{/css/styles.css}" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -17,15 +19,21 @@
 
     <body>
 
+<!-- thymeleaf navigation within body -->
         <div th:fragment="navigation">
 
+<!-- if user logged in then display -->
             <div th:if="${userId}">
 
                 <nav class="user-nav">
 
+<!-- routes to AuthenticationController to log out -->
                     <a href="/logout">Log Out</a>
 
                 </nav>
+
+<!-- 1 horizontal line space between title and nav lines -->
+                <br />
 
                 <nav>
 
@@ -37,10 +45,12 @@
 
             </div>
 
+<!-- if user not logged in then display -->
             <div th:unless="${userId}">
 
                 <nav>
 
+<!-- routes to AuthenticationController to log in or register -->
                     <a href="/login">Log In</a> |
                     <a href="/register">Register</a>
 

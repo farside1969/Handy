@@ -95,6 +95,9 @@ public class ContractorController extends AbstractController {
         theContractor.addItem(theJob);
         contractorDao.save(theContractor);
 
+//displays the specific contractor with their specific job list
         return "redirect:/contractor/view/" + theContractor.getUid();
     }
+
+//TODO create ContractorController block to remove Contractor
 }

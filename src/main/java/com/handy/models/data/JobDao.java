@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import javax.transaction.Transactional;
 import java.util.List;
 
-//CRUD VooDoo
+//add CRUD inheritance
 @Transactional
 @Repository
 public interface JobDao extends CrudRepository<Job, Integer> {

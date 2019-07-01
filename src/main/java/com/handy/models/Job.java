@@ -28,7 +28,7 @@ public class Job extends AbstractEntity {
     @ManyToOne
     private JobClass jobClass;
 
-//spring tying list of many Contractor to many contractors relationship in jobs
+//spring tying list of many contractors to many jobs relationship
     @ManyToMany(mappedBy = "jobs")
     private List<Contractor> contractors;
 

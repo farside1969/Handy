@@ -10,7 +10,9 @@
 
         <nav th:replace="fragments :: navigation"></nav>
 
-<!-- TODO add notes -->
+<!-- 1 line space between nav bar and body -->
+        <br />
+
         <ul>
 
 <!-- select job.name or job.description or job.class (category) to display in list-->
@@ -20,7 +22,13 @@
 
         <p th:unless="${contractor.jobs.size()}"><i>No Jobs Yet</i></p>
 
-        <p><a th:href="'/contractor/add-item/' + ${contractor.uid}">Add Job</a></p>
+        <p>
+
+            <a th:href="'/contractor/add-item/' + ${contractor.uid}">Add Job</a><!-- | -->
+            <!-- TODO activate Remove Job block href here when block complete
+            <a>Remove Job</a>-->
+
+        </p>
 
     </body>
 

@@ -10,13 +10,15 @@
 
         <nav th:replace="fragments :: navigation"></nav>
 
-<!-- TODO add notes -->
 <!-- ties to /contractor/add-item in ContractorController -->
         <form method="post" th:object="${form}" action="/contractor/add-item">
 
+<!-- 1 line space from nav bar to body -->
+            <br />
+
             <div class="form-group">
 
-                <label th:for="jobId">Job</label>
+                <label th:for="jobId">Select Job</label>
 
                 <select name="jobId">
 

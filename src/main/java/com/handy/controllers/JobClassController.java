@@ -40,8 +40,32 @@ public class JobClassController extends AbstractController {
             model.addAttribute("title", "Add JobClass");
             return "jobClass/add";
         }
-//save jobClass with CRUD inheritance and return to jobClass index page
+//save jobClass with CRUD inheritance via jobClassDao and return to jobClass index page
         jobClassDao.save(jobClass);
         return "redirect:";
     }
-}
+/* TODO create JobClassController block to remove JobClass
+//display remove jobClass form
+    @RequestMapping(value = "remove", method = RequestMethod.GET)
+    public String displayRemoveJobClassForm(Model model, HttpServletRequest request) {
+
+//retrieve user in session
+        User user = getUserFromSession(request.getSession());
+
+        model.addAttribute("job", jobDao.findByOwner(user));
+        model.addAttribute("title", "Remove Job Class");
+        return "jobClass/remove";
+    }
+
+//process remove jobClass form
+    @RequestMapping(value = "remove", method = RequestMethod.POST)
+    public String processRemoveJobClassForm(@RequestParam int[] ids) {
+
+//delete jobClass from existence via jobClass id and return to jobClass index page
+        for (int id : ids) {
+            jobClassDao.delete(id);
+        }
+
+        return "redirect:";
+*/
+    }

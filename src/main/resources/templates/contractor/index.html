@@ -10,7 +10,9 @@
 
         <nav th:replace="fragments :: navigation"></nav>
 
-<!-- TODO add notes -->
+<!-- 1 line space between nav bar and body -->
+        <br />
+
         <ul>
 
             <li th:each="contractor : ${contractors}">
@@ -21,7 +23,12 @@
 
         </ul>
 
-        <p><a href="/contractor/add">Add Contractor</a></p>
+        <p>
+
+            <a href="/contractor/add">Add Contractor</a><!-- | -->
+            <!--TODO activate href when block completed-->
+            <!--<a>Remove Contractor</a>-->
+        </p>
 
     </body>
 

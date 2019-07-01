@@ -5,7 +5,6 @@ import com.handy.models.Contractor;
 
 import javax.validation.constraints.NotNull;
 
-//TODO correct notes?
 public class AddContractorForm {
 
 //field ids
