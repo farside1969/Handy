@@ -2,44 +2,37 @@
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 
+<!-- Thymeleaf header -->
 <head th:replace="fragments :: head"></head>
 
 <body class="container">
 
 <h1 th:text="${title}">Default Title</h1>
 
+<!-- Thymeleaf navigation links -->
 <nav th:replace="fragments :: navigation"></nav>
 
-<!-- TODO add notes -->
-<!-- 1 line space bewteen nav bar and body -->
+<!-- 1 line space between nav bar and body -->
 <br />
 
-<p th:unless="${jobClasses} and ${jobClasses.size()}">No Categories Yet</p>
+<ul>
 
-<table class="table">
+    <!-- loop jobClass -->
+    <li th:each="jobClass : ${jobClasses}">
 
-    <tr>
+        <!-- hotlink jobClass and jobClassId displaying jobClass name -->
+        <a th:href="'/job/jobClass?uid=' + ${jobClass.uid}" th:text="${jobClass.name}"></a>
 
-        <th>Job Category</th>
+    </li>
 
-    </tr>
+</ul>
 
-    <tr th:each="jobClass : ${jobClasses}">
-
-       <!-- <td th:text="${job.name}"></td>
-        <td th:text="${job.description}"></td> -->
-        <td th:text="${jobClass.name}"></td>
-
-    </tr>
-
-</table>
-
+<!-- hot link to jobClass/add displaying "Add Job Category" -->
 <p>
 
-    <a href="/jobClass/add">Add Category</a><!-- |
-    
-    <a href="/jobClass/remove">Remove Category</a>
--->
+    <a href="/jobClass/add">Add Job Category</a><!-- | -->
+    <!-- TODO activate remove jobClass href when block created -->
+    <!--<a href="/jobClass/remove">Remove Job Category</a>-->
 </p>
 
 </body>
