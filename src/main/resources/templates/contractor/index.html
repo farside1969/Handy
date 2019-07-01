@@ -14,7 +14,7 @@
         <br />
 
         <ul>
-
+<!-- loop list of contractors -->
             <li th:each="contractor : ${contractors}">
 
                 <a th:href="'/contractor/view/' + ${contractor.uid}" th:text="${contractor.name}"></a>

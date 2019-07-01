@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 
+<!-- for adding job to individual contractor list -->
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 
     <head th:replace="fragments :: head"></head>
@@ -18,11 +19,12 @@
 
             <div class="form-group">
 
+<!-- drop down box name for adding jobs to contractors -->
                 <label th:for="jobId">Select Job</label>
 
                 <select name="jobId">
 
-<!-- select job.name or job.description or job.class (category) to display in list -->
+<!-- select job.name or job.description or job.class (category) in th:text to display in drop down list -->
                     <option th:each="job : *{jobs}"
                             th:text="${job.description}"
                             th:value="${job.uid}"></option>

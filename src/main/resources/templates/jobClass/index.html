@@ -2,39 +2,46 @@
 
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 
-<!-- Thymeleaf header -->
-    <head th:replace="fragments :: head"></head>
+<head th:replace="fragments :: head"></head>
 
-    <body class="container">
+<body class="container">
 
-        <h1 th:text="${title}">Default Title</h1>
+<h1 th:text="${title}">Default Title</h1>
 
-<!-- Thymeleaf navigation links -->
-        <nav th:replace="fragments :: navigation"></nav>
+<nav th:replace="fragments :: navigation"></nav>
 
-<!-- 1 line space between nav bar and body -->
-        <br />
+<!-- TODO add notes -->
+<!-- 1 line space bewteen nav bar and body -->
+<br />
 
-        <ul>
+<p th:unless="${jobClasses} and ${jobClasses.size()}">No Categories Yet</p>
 
-<!-- loop jobClass -->
-            <li th:each="jobClass : ${jobClasses}">
+<table class="table">
 
-<!-- hotlink jobClass and jobClassId displaying jobClass name -->
-                <a th:href="'/job/jobClass?uid=' + ${jobClass.uid}" th:text="${jobClass.name}"></a>
+    <tr>
 
-            </li>
+        <th>Job Category</th>
 
-        </ul>
+    </tr>
 
-<!-- hot link to jobClass/add displaying "Add Job Category" -->
-        <p>
+    <tr th:each="jobClass : ${jobClasses}">
 
-            <a href="/jobClass/add">Add Job Category</a><!-- | -->
-            <!-- TODO activate remove jobClass href when block created -->
-            <!--<a href="/jobClass/remove">Remove Job Category</a>-->
-        </p>
+       <!-- <td th:text="${job.name}"></td>
+        <td th:text="${job.description}"></td> -->
+        <td th:text="${jobClass.name}"></td>
 
-    </body>
+    </tr>
+
+</table>
+
+<p>
+
+    <a href="/jobClass/add">Add Category</a><!-- |
+    
+    <a href="/jobClass/remove">Remove Category</a>
+-->
+</p>
+
+</body>
 
 </html>
