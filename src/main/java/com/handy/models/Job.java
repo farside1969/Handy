@@ -1,6 +1,5 @@
 package com.handy.models;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -30,7 +29,11 @@ public class Job extends AbstractEntity {
     private JobClass jobClass;
 
 //spring tying list of many contractors to many jobs relationship
-    @ManyToMany(mappedBy = "jobs", cascade = { CascadeType.DETACH, CascadeType.REMOVE})
+/*    @ManyToMany(mappedBy = "jobs", cascade = { CascadeType.DETACH, CascadeType.REMOVE})
+    private List<Contractor> contractors;
+*/
+//spring tying list of many contractors to many jobs relationship
+    @ManyToMany(mappedBy = "jobs")
     private List<Contractor> contractors;
 
 //constructor for name and description

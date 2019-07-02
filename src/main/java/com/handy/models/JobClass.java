@@ -16,6 +16,7 @@ public class JobClass extends AbstractEntity {
 
 //spring tying list of one Job to many jobs in a new list relationship
     @OneToMany
+    @JoinColumn(name = "job_Class_uid")
     private List<Job> jobs = new ArrayList<>();
 
 //default constructor

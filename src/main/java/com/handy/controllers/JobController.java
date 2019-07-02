@@ -85,9 +85,9 @@ public class JobController extends AbstractController {
 
 //delete job from existence via job id and return to job index page
         for (int id : ids) {
-            Job job = jobDao.findOne(id);
+/*            Job job = jobDao.findOne(id);
             job.removeContractors();
-            jobDao.save(job);
+            jobDao.save(job);                  */
             jobDao.delete(id);
         }
 
@@ -102,7 +102,7 @@ public class JobController extends AbstractController {
         JobClass cat = jobClassDao.findOne(uid);
         List<Job> jobs = cat.getJobs();
         model.addAttribute("jobs", jobs);
-        model.addAttribute("title", "Jobs in JobClass: " + cat.getName());
+        model.addAttribute("title", "Jobs in Job Class: " + cat.getName());
         return "job/index";
     }
 }
