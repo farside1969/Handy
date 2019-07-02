@@ -20,7 +20,7 @@
             <div class="form-group">
 
 <!-- drop down box name for adding jobs to contractors -->
-                <label th:for="jobId">Select Job</label>
+                <label th:for="jobId">Select Project</label>
 
                 <select name="jobId">
 
@@ -36,7 +36,7 @@
             </div>
 
             <input type="hidden" name="contractorId" th:value="*{contractor.uid}" />
-            <input type="submit" value="Add Job" />
+            <input type="submit" value="Add Project" />
 
         </form>
 

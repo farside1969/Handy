@@ -16,8 +16,6 @@ public class Contractor extends AbstractEntity {
 
 //spring tying list of many Job to many jobs relationship
     @ManyToMany
-//TODO join or no join
-//    @JoinTable
     private List<Job> jobs;
 
 //default constructor

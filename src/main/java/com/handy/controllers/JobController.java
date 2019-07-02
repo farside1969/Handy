@@ -27,7 +27,7 @@ public class JobController extends AbstractController {
         User user = getUserFromSession(request.getSession());
 
         model.addAttribute("jobs", jobDao.findByOwner(user));
-        model.addAttribute("title", "My Jobs");
+        model.addAttribute("title", "My Projects");
 
         return "job/index";
     }
@@ -35,7 +35,7 @@ public class JobController extends AbstractController {
 //displays add job form
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayAddJobForm(Model model) {
-        model.addAttribute("title", "Add Job");
+        model.addAttribute("title", "Add Project");
         model.addAttribute(new Job());
         model.addAttribute("jobClasses", jobClassDao.findAll());
         return "job/add";
@@ -49,7 +49,7 @@ public class JobController extends AbstractController {
 
 //if errors returns to add job form
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Add Job");
+            model.addAttribute("title", "Add Project");
             model.addAttribute("jobClasses", jobClassDao.findAll());
             return "job/add";
         }
@@ -75,7 +75,7 @@ public class JobController extends AbstractController {
         User user = getUserFromSession(request.getSession());
 
         model.addAttribute("jobs", jobDao.findByOwner(user));
-        model.addAttribute("title", "Remove Job");
+        model.addAttribute("title", "Remove Project");
         return "job/remove";
     }
 
@@ -85,9 +85,6 @@ public class JobController extends AbstractController {
 
 //delete job from existence via job id and return to job index page
         for (int id : ids) {
-/*            Job job = jobDao.findOne(id);
-            job.removeContractors();
-            jobDao.save(job);                  */
             jobDao.delete(id);
         }
 
@@ -102,7 +99,7 @@ public class JobController extends AbstractController {
         JobClass cat = jobClassDao.findOne(uid);
         List<Job> jobs = cat.getJobs();
         model.addAttribute("jobs", jobs);
-        model.addAttribute("title", "Jobs in Job Class: " + cat.getName());
+        model.addAttribute("title", "Projects in: " + cat.getName());
         return "job/index";
     }
 }

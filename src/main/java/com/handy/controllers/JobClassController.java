@@ -18,7 +18,7 @@ public class JobClassController extends AbstractController {
 //displays jobClass index page
     @RequestMapping(value = "", method = RequestMethod.GET)
     public String index(Model model) {
-        model.addAttribute("title", "JobClasses");
+        model.addAttribute("title", "Project Categories");
         model.addAttribute("jobClasses", jobClassDao.findAll());
         return "jobClass/index";
     }
@@ -27,7 +27,7 @@ public class JobClassController extends AbstractController {
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayAddJobClassForm(Model model) {
         model.addAttribute(new JobClass());
-        model.addAttribute("title", "Add JobClass");
+        model.addAttribute("title", "Add Project Category");
         return "jobClass/add";
     }
 
@@ -37,35 +37,11 @@ public class JobClassController extends AbstractController {
 
 //if errors returns to add jobClass page
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Add JobClass");
+            model.addAttribute("title", "Add Project Category");
             return "jobClass/add";
         }
 //save jobClass with CRUD inheritance via jobClassDao and return to jobClass index page
         jobClassDao.save(jobClass);
         return "redirect:";
     }
-/* TODO create JobClassController block to remove JobClass
-//display remove jobClass form
-    @RequestMapping(value = "remove", method = RequestMethod.GET)
-    public String displayRemoveJobClassForm(Model model, HttpServletRequest request) {
-
-//retrieve user in session
-        User user = getUserFromSession(request.getSession());
-
-        model.addAttribute("job", jobDao.findByOwner(user));
-        model.addAttribute("title", "Remove Job Class");
-        return "jobClass/remove";
-    }
-
-//process remove jobClass form
-    @RequestMapping(value = "remove", method = RequestMethod.POST)
-    public String processRemoveJobClassForm(@RequestParam int[] ids) {
-
-//delete jobClass from existence via jobClass id and return to jobClass index page
-        for (int id : ids) {
-            jobClassDao.delete(id);
-        }
-
-        return "redirect:";
-*/
-    }
+}

@@ -20,13 +20,11 @@
 
         </ul>
 
-        <p th:unless="${contractor.jobs.size()}"><i>No Jobs Yet</i></p>
+        <p th:unless="${contractor.jobs.size()}"><i>No Projects Yet</i></p>
 
         <p>
 
-            <a th:href="'/contractor/add-item/' + ${contractor.uid}">Add Job</a><!-- | -->
-            <!-- TODO activate Remove Job block href here when block complete
-            <a>Remove Job</a>-->
+            <a th:href="'/contractor/add-item/' + ${contractor.uid}">Add Project</a>
 
         </p>
 

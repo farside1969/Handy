@@ -14,7 +14,8 @@ public class JobClass extends AbstractEntity {
     @Size(min=3, max=30, message = "Name must be between 3 and 30 characters")
     private String name;
 
-//spring tying list of one Job to many jobs in a new list relationship
+//spring tying many jobs to a jobClass uid relationship
+//joining column allows hotlink in jobClass to jobs in same category
     @OneToMany
     @JoinColumn(name = "job_Class_uid")
     private List<Job> jobs = new ArrayList<>();

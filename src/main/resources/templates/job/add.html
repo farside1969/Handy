@@ -18,7 +18,7 @@
 
             <div class="form-group">
 
-                <label th:for="name">Room</label>
+                <label th:for="name">Room / Area</label>
                 <input class="form-control" th:field="*{name}" />
                 <span th:errors="*{name}" class="error"></span>
 
@@ -34,7 +34,7 @@
 
             <div class="form-group">
 
-                <label th:for="type">Job Category</label>
+                <label th:for="type">Project Category</label>
 
                 <select name="jobClassId">
 
@@ -46,7 +46,7 @@
 
             </div>
 
-            <input type="submit" value="Add Job" />
+            <input type="submit" value="Add Project" />
 
         </form>
 

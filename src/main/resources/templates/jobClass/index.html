@@ -3,38 +3,37 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
 
 <!-- Thymeleaf header -->
-<head th:replace="fragments :: head"></head>
+    <head th:replace="fragments :: head"></head>
 
-<body class="container">
+    <body class="container">
 
-<h1 th:text="${title}">Default Title</h1>
+        <h1 th:text="${title}">Default Title</h1>
 
 <!-- Thymeleaf navigation links -->
-<nav th:replace="fragments :: navigation"></nav>
+        <nav th:replace="fragments :: navigation"></nav>
 
 <!-- 1 line space between nav bar and body -->
-<br />
+        <br />
 
-<ul>
+        <ul>
 
-    <!-- loop jobClass -->
-    <li th:each="jobClass : ${jobClasses}">
+<!-- loop jobClass -->
+            <li th:each="jobClass : ${jobClasses}">
 
-        <!-- hotlink jobClass and jobClassId displaying jobClass name -->
-        <a th:href="'/job/jobClass?uid=' + ${jobClass.uid}" th:text="${jobClass.name}"></a>
+<!-- hotlink jobClass and jobClassId displaying jobClass name -->
+                <a th:href="'/job/jobClass?uid=' + ${jobClass.uid}" th:text="${jobClass.name}"></a>
 
-    </li>
+            </li>
 
-</ul>
+        </ul>
 
 <!-- hot link to jobClass/add displaying "Add Job Category" -->
-<p>
+        <p>
 
-    <a href="/jobClass/add">Add Job Category</a><!-- | -->
-    <!-- TODO activate remove jobClass href when block created -->
-    <!--<a href="/jobClass/remove">Remove Job Category</a>-->
-</p>
+            <a href="/jobClass/add">Add Project Category</a>
 
-</body>
+        </p>
+
+    </body>
 
 </html>

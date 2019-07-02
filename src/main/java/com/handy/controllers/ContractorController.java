@@ -20,7 +20,7 @@ public class ContractorController extends AbstractController {
 //displays contractor index page
     @RequestMapping(value = "")
     public String index(Model model) {
-        model.addAttribute("title", "Contractors");
+        model.addAttribute("title", "Workers");
         model.addAttribute("contractors", contractorDao.findAll());
         return "contractor/index";
     }
@@ -28,7 +28,7 @@ public class ContractorController extends AbstractController {
 //displays add contractor form
     @RequestMapping(value = "add", method = RequestMethod.GET)
     public String displayAddContractorForm(Model model) {
-        model.addAttribute("title", "Add Contractor");
+        model.addAttribute("title", "Add Worker");
         model.addAttribute(new Contractor());
         return "contractor/add";
     }
@@ -40,7 +40,7 @@ public class ContractorController extends AbstractController {
 
 //if errors return to add contractor page
         if (errors.hasErrors()) {
-            model.addAttribute("title", "Add Contractor");
+            model.addAttribute("title", "Add Worker");
             return "contractor/add";
         }
 
@@ -73,7 +73,7 @@ public class ContractorController extends AbstractController {
                 jobDao.findAll(),
                 contractor);
 
-        model.addAttribute("title", "Add contractor: " + contractor.getName());
+        model.addAttribute("title", "Add Worker: " + contractor.getName());
         model.addAttribute("form", form);
         return "contractor/add-item";
     }
@@ -98,6 +98,4 @@ public class ContractorController extends AbstractController {
 //displays the specific contractor with their specific job list
         return "redirect:/contractor/view/" + theContractor.getUid();
     }
-
-//TODO future - create ContractorController block to remove Contractor
 }
