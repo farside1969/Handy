@@ -1,6 +1,7 @@
 package com.handy.models;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
@@ -16,6 +17,8 @@ public class Contractor extends AbstractEntity {
 
 //spring tying list of many Job to many jobs relationship
     @ManyToMany
+//TODO join or no join
+    @JoinTable
     private List<Job> jobs;
 
 //default constructor

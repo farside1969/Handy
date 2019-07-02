@@ -99,5 +99,5 @@ public class ContractorController extends AbstractController {
         return "redirect:/contractor/view/" + theContractor.getUid();
     }
 
-//TODO create ContractorController block to remove Contractor
+//TODO future - create ContractorController block to remove Contractor
 }

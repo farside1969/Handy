@@ -85,6 +85,9 @@ public class JobController extends AbstractController {
 
 //delete job from existence via job id and return to job index page
         for (int id : ids) {
+            Job job = jobDao.findOne(id);
+            job.removeContractors();
+            jobDao.save(job);
             jobDao.delete(id);
         }
 
