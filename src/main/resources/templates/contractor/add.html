@@ -11,11 +11,14 @@
         <nav th:replace="fragments :: navigation"></nav>
 
 <!-- TODO add notes -->
-        <form method="post" style="max-width:600px;" th:object="${contractor}">
+        <form method="post" style="max-width:200px;" th:object="${contractor}">
+
+<!-- 1 line space between nav bar links and input field name -->
+            <br />
 
             <div class="form-group">
 
-                <label th:for="name">Worker Name</label>
+                <label th:for="name">Add Worker Name</label>
                 <input class="form-control" th:field="*{name}" />
                 <span th:errors="*{name}" class="error"></span>
 

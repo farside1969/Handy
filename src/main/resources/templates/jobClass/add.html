@@ -11,14 +11,14 @@
         <nav th:replace="fragments :: navigation"></nav>
 
 <!-- TODO add notes -->
-        <form method="post" style="max-width:600px;" th:object="${jobClass}">
+        <form method="post" style="max-width:200px;" th:object="${jobClass}">
 
 <!-- 1 line space between nav bar and body -->
             <br />
 
             <div class="form-group">
 
-                <label th:for="name">Project Category</label>
+                <label th:for="name">Create Project Category</label>
                 <input class="form-control" th:field="*{name}" />
                 <span th:errors="*{name}" class="error"></span>
 
