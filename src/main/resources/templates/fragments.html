@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 
-<html lang="en" xmlns:th="http://www.thymeleaf.org/">
+<html lang="en" xmlns:th="http://www.thymeleaf.org/" xmlns:background-image="http://www.w3.org/1999/xhtml">
 
 <!-- thymeleaf header -->
     <head th:fragment="head">
@@ -10,10 +10,23 @@
 <!-- display page title -->
         <title th:text="${title}">My Projects</title>
 
+
 <!-- bootstrap decor -->
         <link rel="stylesheet" th:href="@{/css/styles.css}" />
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
         <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!-- bootstrap background image -->
+<!--        <style  type="text/css">
+            body {
+            background-image: url("https://thumbs.dreamstime.com/z/construction-vehicles-9703739.jpg");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-color: #b2ebf2;
+            }
+        </style>-->
 
 <!-- bootstrap colors: #9fa8da indigo lighten-3 / #c5cae9 indigo lighten-4 /
 #b2ebf2 cyan lighten-4 / #80deea cyan lighten-3 -->
@@ -23,7 +36,7 @@
 
     </head>
 
-    <body>
+    <body background="Handy Wire Frame.jpg">
 
 <!-- thymeleaf navigation within body -->
         <div th:fragment="navigation">

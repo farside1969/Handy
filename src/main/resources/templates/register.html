@@ -4,6 +4,21 @@
 
     <head th:replace="fragments :: head"></head>
 
+<!--    <head>
+
+        <style  type="text/css">
+            body {
+            background-image: url("https://thumbs.dreamstime.com/z/construction-vehicles-9703739.jpg");
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+            background-color: #b2ebf2;
+            }
+        </style>
+
+    </head> -->
+
     <body class="container">
 
         <h1 th:text="${title}">Default Title</h1>
@@ -24,7 +39,7 @@
                 <div class="error" th:errors="*{username}"></div>
 
             </div>
-
+<br />
             <div class="form-group">
 
                 <label th:for="password">Password</label>
@@ -33,7 +48,7 @@
                 <div class="error" th:errors="*{password}"></div>
 
             </div>
-
+<br />
             <div class="form-group">
 
                 <label th:for="verifyPassword">Verify</label>
@@ -42,7 +57,7 @@
                 <div class="error" th:text="${verifyError}"></div>
 
             </div>
-
+<br />
             <input type="submit" value="Register" />
 
         </form>
