@@ -1,15 +1,15 @@
 # handy: phase 1
 A web based user sign in log to help keep track of a users projects at home.
 
-Written in Java 8
-Using Spring (Framework) 
-Hiebernate ORM (Object Relationship Mapping)
-Thymeleaf (Java Template Engine) 
-HTML5 (Markup Language for Structuring and Presenting Content on the Web) 
-CSS (Styles HTML element)
-Bootstrap (CSS Framework)
-MAMP (Local Server Environment)
-phpMyAdmin (Admin Tool for MySQL)
+Written in Java 8,
+Using Spring (Framework), 
+Hiebernate ORM (Object Relationship Mapping),
+Thymeleaf (Java Template Engine), 
+HTML5 (Markup Language for Structuring and Presenting Content on the Web), 
+CSS (Styles HTML element),
+Bootstrap (CSS Framework),
+MAMP (Local Server Environment),
+phpMyAdmin (Admin Tool for MySQL) and
 IntelliJ IDEA IDE (Integrated Development Environment)
 
 Multiple users can sign in and see their own projects in a list or all of the projects, their users and which Workers are assigned to each one.
